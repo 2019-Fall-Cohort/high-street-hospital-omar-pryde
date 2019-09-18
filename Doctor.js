@@ -1,33 +1,41 @@
 const Employees = require("./Employees");
 
 class Doctor extends Employees{
-constructor(){
-    super();
-    this.salary = 90000
-    this.specialtyArray = ["Radiology", "Cardiology","Medicine", "Family", "Nerology", "Psychiatry" ];
-}
-getSpecialty(){
-let specialtyArea = this.specialtyArray;
-if (specialtyArea= "Radiology"){
-    return this.specialtyArray[1];
-}
-if (specialtyArea= "Cardiology"){
-    return this.specialtyArray[2];
-}
-if (specialtyArea= "Medicine"){
-    return this.specialtyArray[3];
-}
-if (specialtyArea= "Family"){
-    return this.specialtyArray[4];
-}
-if (specialtyArea= "Nerology"){
-    return this.specialtyArray[5];
-}
-if (specialtyArea= "Psychiatry"){
-    return this.specialtyArray[6];
-}
-else Console.log("Input is Invald!!; Try Agian! ")
+    constructor(){
+        super();
+        this.salary = 90000
+        this.specialty = getSpecialty();
+        this.caresForPatients = true;
+        
+    }
+    getSpecialty(){
 
+        specialtyArray = ["Radiology", "Cardiology","Medicine", "Family", "Neurology", "Psychiatry" ];
+        switch (Math.floor(6 * Math.random())) {
 
-}}
+            case "0": return specialtyArray[0];
+            break;
+
+            case "1": return specialtyArray[1];
+            break;
+
+            case "2": return specialtyArray[2];
+            break;
+
+            case "3": return specialtyArray[3];
+            break;
+
+            case "4": return specialtyArray[4];
+            break;
+
+            case "5": return specialtyArray[5];
+            break;
+
+            default: return "Gyneacology";
+            break;
+            
+        }
+    }
+}
+
 module.exports = Doctor;

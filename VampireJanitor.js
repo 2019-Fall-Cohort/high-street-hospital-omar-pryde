@@ -1,9 +1,12 @@
 const Employees = require("./Employees");
-const Janitor = require("Janitor");
+const Janitor = require("./Janitor");
 
-class VampireJanitor extends Employees{
+class VampireJanitor extends Janitor{
     constructor(){
         super();
+
     }
+
+ 
 } 
 module.exports = VampireJanitor;
