@@ -1,4 +1,5 @@
 const Employees = require("./Employees");
+const input = require("./readline-sync");
 
 class Doctor extends Employees{
 constructor(){
@@ -6,6 +7,7 @@ constructor(){
     this.salary = 90000
     this.specialtyArray = ["Radiology", "Cardiology","Medicine", "Family", "Nerology", "Psychiatry" ];
 }
+
 getSpecialty(){
 let specialtyArea = this.specialtyArray;
 if (specialtyArea= "Radiology"){
