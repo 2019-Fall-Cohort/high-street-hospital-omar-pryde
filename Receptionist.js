@@ -5,6 +5,7 @@ class Receptionist extends Employees{
         super();
         this.salary = 45000;
         this.work;
+        this.caresForPatients = false;
     }
     getWorking(){
         if(this.work=== true){
