@@ -2,12 +2,14 @@ const Employees = require("./Employees");
 const Patient = require("./Patient"); 
 
 class Nurse extends Employees{
-    constructor(){
-        // super();
-        this.salary= 50000;
-        this.collectionOfPatients = [10];
-        this.caresForPatients = true;
+    constructor(name, idNum, collectionOfPatientsSize = 10){
+        super(name, idNum, "Nurse", 50000, true);
+        this.collectionOfPatients = [collectionOfPatientsSize];
+        this.collectionOfPatientsSize = collectionOfPatientsSize;
+        //this.collectionOfPatients = getCollectionOfPatients();
 
     }
+
+    // getCollectionOfPatients(){}
 }
 module.exports = Nurse;

@@ -1,39 +1,16 @@
 class Patient{
-    constructor(){
+    constructor(patientName, bloodLevel, healthLevel){
 
-        let patientName = getRandomName();
-        let bloodLevel = getRandomLevel();
-        let healthLevel = getRandomLevel();
+        this.patientName = this.getRandomName();
+        this.bloodLevel = this.getRandomLevel();
+        this.healthLevel = this.getRandomLevel();
     }
 
     getRandomName(){
-
         nameArray = ["Josh", "David", "Marie", "Ana", "Joe", "Layla" ];
-        switch (Math.floor(6 * Math.random())) {
-
-            case "0": return nameArray[0];
-            break;
-
-            case "1": return nameArray[1];
-            break;
-
-            case "2": return nameArray[2];
-            break;
-
-            case "3": return nameArray[3];
-            break;
-
-            case "4": return nameArray[4];
-            break;
-
-            case "5": return nameArray[5];
-            break;
-
-            default: return "Spongebob";
-           
-            
-        }
+        return  nameArray[Math.floor(6 * Math.random())];   
     }
+    
     
     getRandomLevel() {
         return Math.floor(100 * Math.random());

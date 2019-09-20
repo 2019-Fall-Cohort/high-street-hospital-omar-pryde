@@ -1,6 +1,6 @@
 
 class Employees{
-    constructor(name, idNum, position, salary){
+    constructor(name, idNum, position, salary, caresForPatients){
        
         this.name = name;
         this.idNum = idNum;
@@ -8,11 +8,6 @@ class Employees{
         this.salary = salary; 
         this.caresForPatients = caresForPatients;
     }
-    // setName(newName){
-    //     this.name = newName;
-    // }
-    // getID(){
-    //     return idNum;
-    // }
+
 }
 module.exports = Employees;
