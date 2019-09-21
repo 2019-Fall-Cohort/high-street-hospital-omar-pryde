@@ -1,7 +1,7 @@
 class Patient{
-    constructor(patientName, bloodLevel, healthLevel){
+    constructor(patientName){
 
-        this.patientName = this.getRandomName();
+        this.patientName = patientName;
         this.bloodLevel = this.getRandomLevel();
         this.healthLevel = this.getRandomLevel();
     }
