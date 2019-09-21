@@ -243,6 +243,32 @@ class Hospital {
 
         return employedVampJanitors;
     }
+    getCollectionOfPatients(){
+        let numOfNurses = this.employedNurses.length ;
+        let numOfPatients = this.admitPatients.length;
+        let counter1 = numOfNurses -1;
+        let counter2 = Math.floor(numOfPatients/numOfNurses) -1;
+
+        do{ //this cycles through Nurses
+            counter2 =Math.floor(numOfPatients/numOfNurses); //resets counter2 from Zero at end of each 
+                                                            //loop to number of patients, to assign to next nurse.
+            do { //this cycles through Patients
+                numOfPatients = numOfPatients-1
+                this.employedNurses[counter1].collectionOfPatients.push(this.allPatients[numOfPatients]);
+                counter2 = counter2 -1;
+            } while(counter2 > 0);
+            counter1 = counter1 -1;
+        } while(counter1 > 0);
+        //after we make sure above loop works, make another to work on remainder
+        
+        if(this.admitPatients.length % this.employedNurses.length > 0){
+            do{
+                numOfPatients = numOfPatients-1;
+                this.employedNurses.collectionOfPatients[0].push(this.allPatients[numOfPatients]);
+            }while(numOfPatients > 0)
+
+        }
+}
 
 }
 

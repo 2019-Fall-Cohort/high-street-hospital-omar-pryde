@@ -1,4 +1,5 @@
 const Employees = require("./Employees");
+const input = require("./readline-sync");
 
 class Doctor extends Employees{
     constructor (name, idNum, position , salary, caresForPatients, specialty)
