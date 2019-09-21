@@ -1,6 +1,6 @@
 
 class Employees{
-    constructor(name, idNum, position, salary){
+    constructor(name, idNum, position, salary, caresForPatients){
        
         this.name = name;
         this.idNum = idNum;

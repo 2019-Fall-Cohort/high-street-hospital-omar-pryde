@@ -1,7 +1,8 @@
+const Employees = require("./Employees");
 
 class EmployeeMaker{
     constructor(){
-        super(Employees);
+        super();
         position = ["doctor", "surgeon", "nurse", "janitor", "receptionist"]
                       
     }
@@ -18,4 +19,4 @@ class EmployeeMaker{
 
 
 }
-module.exports = Employees2;
+module.exports = EmployeeMaker;
