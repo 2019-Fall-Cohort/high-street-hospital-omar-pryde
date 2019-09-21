@@ -1,19 +1,19 @@
 const Employees = require("./Employees");
 class Janitor extends Employees{
-    constructor()
+    constructor(name, idNum, position)
     {
-        super();
-        this.work;
+        super(name, idNum, position, 40000, false);
+        this.position = "Janitor";
         this.salary = 40000;
         this.caresForPatients = false;
-        this.isSweeping = getRandomBoolean();
+        this.isSweeping = this.getRandomBoolean();
     }
     getGwop(){
         return salary;
     }
     getCleaning(){
         if(this.work === true){
-            return "Is wroking hard... sweeping. "
+            return "Is working hard... sweeping. "
         }
         else{
             return "They must be off today, no one is sweeping! "

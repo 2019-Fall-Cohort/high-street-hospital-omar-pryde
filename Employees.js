@@ -8,11 +8,6 @@ class Employees{
         this.salary = salary; 
         this.caresForPatients = caresForPatients;
     }
-    // setName(newName){
-    //     this.name = newName;
-    // }
-    // getID(){
-    //     return idNum;
-    // }
+
 }
 module.exports = Employees;

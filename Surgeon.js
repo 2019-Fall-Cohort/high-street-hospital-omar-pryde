@@ -1,41 +1,20 @@
 const Employees = require("./Employees");
 const Doctor = require("./Doctor");
 
-class Surgeon extends Doctor{
-    constructor(){ 
-        super();
+class Surgeon extends Doctor {
+    constructor(name, idNum, position = "Surgeon", salary = 120000, caresForPatients, specialty, surgicalSpecialty)
+    { 
+        super(name, idNum, position, salary, caresForPatients, specialty, surgicalSpecialty);
+        this.position = "Surgeon";
         this.salary = 120000;
-        this.SurgicalSpecialty = getSurgicalSpecialty();
+        this.surgicalSpecialty = this.getSurgicalSpecialty(surgicalSpecialty);
         this.caresForPatients = true;
     }
 
-    getSurgicalSpecialty(){
-
-        specialtyArray = ["Anesthesiology", "Cardiology","Osteopathy", "Gastro-intestinal", "Neurology", "Respiratory" ];
-        switch (Math.floor(6 * Math.random())) {
-
-            case "0": return specialtyArray[0];
-            break;
-
-            case "1": return specialtyArray[1];
-            break;
-
-            case "2": return specialtyArray[2];
-            break;
-
-            case "3": return specialtyArray[3];
-            break;
-
-            case "4": return specialtyArray[4];
-            break;
-
-            case "5": return specialtyArray[5];
-            break;
-
-            default: return "General Surgeon";
-            break;
-            
-        }
+    getSurgicalSpecialty(X = (Math.floor(6 * Math.random()))){
+        let specialtyArray = ["Anesthesiology", "Cardiology","Osteopathy", "Gastro-intestinal", "Neurology", "Respiratory" ];
+        return specialtyArray[X];  
+        
     }
 }
-module.export = Surgeon;
+module.exports = Surgeon;

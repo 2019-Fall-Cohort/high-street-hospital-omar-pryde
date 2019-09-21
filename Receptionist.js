@@ -1,10 +1,10 @@
 const Employees = require("./Employees");
 
 class Receptionist extends Employees{
-    constructor(){
-        super();
+    constructor(name, idNum){
+        super(name, idNum, "Receptionist", 45000, false);
         this.salary = 45000;
-        this.work;
+        this.position;
         this.caresForPatients = false;
     }
     getWorking(){
