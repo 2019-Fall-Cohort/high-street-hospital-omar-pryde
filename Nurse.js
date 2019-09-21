@@ -5,10 +5,7 @@ class Nurse extends Employees{
     constructor(name, idNum, collectionOfPatients){
         super(name, idNum, "Nurse", 50000, true);
         this.collectionOfPatients = collectionOfPatients;
-        //this.collectionOfPatients = getCollectionOfPatients();
-
     }
 
-    // getCollectionOfPatients(){}
 }
 module.exports = Nurse;

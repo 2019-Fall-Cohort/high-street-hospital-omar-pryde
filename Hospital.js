@@ -9,17 +9,104 @@ const Patient = require("./Patient");
 
 class Hospital {
     constructor(numOfDoctors, numOfSurgeons, numOfReceptionists, numOfJanitors, numOfVampJanitors, numOfPatients){
-        this.employedDoctors = hireDoctors(numOfDoctors);
-        this.employedSurgeons = hireSurgeons(numOfSurgeons);
-        this.employedReceptionists = hireReceptionists(numOfReceptionists);
-        this.employedJanitors = hireJanitors(numOfJanitors);
-        this.employedVampJanitors = hireVampJanitors(numOfVampJanitors);
-        this.employedNurses = hireNurses(numOfNurses);
-        this.allPatients = admitPatients(numOfPatients);
+        this.employedDoctors = this.hireDoctors(numOfDoctors);
+        this.employedSurgeons = this.hireSurgeons(numOfSurgeons);
+        this.employedReceptionists = this.hireReceptionists(numOfReceptionists);
+        this.employedJanitors = this.hireJanitors(numOfJanitors);
+        this.employedVampJanitors = this.hireVampJanitors(numOfVampJanitors);
+        this.employedNurses = this.hireNurses(numOfNurses);
+        this.allEmployees = this.getAllEmployees();
+        this.allPatients = this.admitPatients(numOfPatients);
+        this.hospitalCleanliness = Math.floor(100 * Math.random());
 
     }
 
-    hireDoctors(numberOfDoctors){
+    admitPatients(numOfPatients){ //generates random list of patients to admit into hospital
+
+        let admitedPatients = []
+        let name;
+        let newPatient;
+        
+
+        do{
+            name = getRandomName();
+
+            newPatient = new Patient(name);
+            admitedPatients.push(newPatient);
+
+            counter = counter + 1;
+
+        } while (counter < numOfPatients);
+        
+        return admitedPatients;
+    }
+
+    getAllEmployees(){ //consolidates all employees into one array
+        let counter;
+
+        // Push Doctors
+        counter = this.employedDoctors.length;
+            do{
+                counter = counter - 1;
+                allEmployees.push(this.employedDoctors[counter]);
+            }while (counter > 0);
+
+        // Push Surgeons
+        counter = this.employedSurgeons.length;
+        do{
+            counter = counter - 1;
+            allEmployees.push(this.employedSurgeons[counter]);
+        }while (counter > 0);
+
+        // Push Receptionists
+        counter = this.employedReceptionists.length;
+        do{
+            counter = counter - 1;
+            allEmployees.push(this.employedReceptionists[counter]);
+        }while (counter > 0);
+
+        // Push Nurses
+        counter = this.employedReceptionists.length;
+        do{
+            counter = counter - 1;
+            allEmployees.push(this.employedReceptionists[counter]);
+        }while (counter > 0);
+
+        // Push Janitors
+        counter = this.employedJanitors.length;
+        do{
+            counter = counter - 1;
+            allEmployees.push(this.employedJanitors[counter]);
+        }while (counter > 0);
+
+        // Push Vampire Janitors
+        counter = this.employedVampJanitors.length;
+        do{
+            counter = counter - 1;
+            allEmployees.push(this.employedVampJanitors[counter]);
+        }while (counter > 0);
+
+        return this.allEmployees;
+    }
+
+    getRandomID(){ //used to generate a random id for employees
+        let idLength = 6;
+        let empId =  "";
+
+        while(idLength > 0) {
+        const idArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","0"];
+        empId = empId + idArray[getRandomElement(idArray.length)];
+        idLength --;
+            }   
+        return empId;
+    }
+
+    getRandomName(){ //used to select a random name for each employee or patient
+        nameArray = ["Josh", "David", "Marie", "Ana", "Joe", "Layla", "Paul", "Chris", "Christina", "Paulina", "Krista", "Donald", "Goofy", "Minnie", "Leslie", "Bill", "Lacey", "Kendra", "Karen", "Katherine", "Tracey", "Richard", "Erica", "Juan", "Ricardo", "Fernanda", "Maria", "Juanita", "Lola" ];
+        return  nameArray[Math.floor((nameArray.length * Math.random())) - 1];
+    }
+
+    hireDoctors(numberOfDoctors){ //generates an array of random doctors who work at the hospital 
 
         let employedDoctors = []
         let name;
@@ -42,52 +129,7 @@ class Hospital {
     
     }
 
-    hireSurgeons(numberOfSurgeons){
-
-        let employedSurgeons = []
-        let name;
-        let idNum;
-        let counter;
-        let newSurgeon;
-
-        do{
-            name = "Surgeon " + getRandomName();
-            idNum = getRandomID();
-
-            newSurgeon = new Surgeon(name, idNum, "Surgeon", 120000, true);
-            employedSurgeons.push(newSurgeon);
-
-            counter = counter + 1;
-
-        } while (counter < numberOfSurgeons);
-    
-        return employedSurgeons;
-    
-    }
-
-    hireReceptionists(numberOfReceptionists){
-
-        let employedReceptionists = []
-        let name;
-        let idNum;
-        let counter;
-        let newReceptionist;
-
-        do{
-            name = getRandomName();
-            idNum = getRandomID();
-
-            newReceptionist = new Receptionist(name, idNum);
-            employedReceptionists.push(newReceptionist);
-
-            counter = counter + 1;
-
-        } while (counter < numberOfReceptionists);
-    
-        return employedReceptionists
-    }
-
-    hireJanitors(numberOfJanitors){
+    hireJanitors(numberOfJanitors){ //generates an array of random janitors who work at the hospital
 
         let employedJanitors = []
         let name;
@@ -110,7 +152,77 @@ class Hospital {
         
     }
 
-    hireVampJanitors(numberOfVampJanitors){
+    hireNurses(numberOfNurses){ //generates an array of random nurses who work at the hospital
+
+        let employedNurses = []
+        let name;
+        let idNum;
+        let counter;
+        let newNurses;
+        let patientsList;
+
+        do{
+            name = getRandomName();
+            idNum = getRandomID();
+            patientsList = getPatientsList(sizeOfList)
+
+            newNurses = new Nurse(name, idNum, patientsList);
+            employedNurses.push(newNurses);
+
+            counter = counter + 1;
+
+        } while (counter < numberOfNurses);
+        
+        return employedNurses;
+        
+    }
+
+    hireReceptionists(numberOfReceptionists){ //generates an array of random receptionists who work at the hospital
+
+        let employedReceptionists = []
+        let name;
+        let idNum;
+        let counter;
+        let newReceptionist;
+
+        do{
+            name = getRandomName();
+            idNum = getRandomID();
+
+            newReceptionist = new Receptionist(name, idNum);
+            employedReceptionists.push(newReceptionist);
+
+            counter = counter + 1;
+
+        } while (counter < numberOfReceptionists);
+    
+        return employedReceptionists
+    }
+
+    hireSurgeons(numberOfSurgeons){ //generates an array of random surgeons who work at the hospital
+
+        let employedSurgeons = []
+        let name;
+        let idNum;
+        let counter;
+        let newSurgeon;
+
+        do{
+            name = "Surgeon " + getRandomName();
+            idNum = getRandomID();
+
+            newSurgeon = new Surgeon(name, idNum, "Surgeon", 120000, true);
+            employedSurgeons.push(newSurgeon);
+
+            counter = counter + 1;
+
+        } while (counter < numberOfSurgeons);
+    
+        return employedSurgeons;
+    
+    }
+
+    hireVampJanitors(numberOfVampJanitors){ //generates an array of random vampire janitors who work at the hospital
 
         let employedVampJanitors = [];
         let name;
@@ -130,68 +242,6 @@ class Hospital {
         } while (counter < numberOfVampJanitors);
 
         return employedVampJanitors;
-    }
-
-    hireNurses(numberOfNurses){
-
-        let employedNurses = []
-        let name;
-        let idNum;
-        let counter;
-        let newNurses;
-        let PatientsList;
-
-        do{
-            name = getRandomName();
-            idNum = getRandomID();
-            PatientsList = getPatientsList(sizeOfList)
-
-            newNurses = new Nurse(name, idNum, PatientsList);
-            employedNurses.push(newNurses);
-
-            counter = counter + 1;
-
-        } while (counter < numberOfNurses);
-        
-        return employedNurses;
-        
-    }
-
-    admitPatients(numOfPatients){
-
-        let admitedPatients = []
-        let name;
-        let newPatient;
-        
-
-        do{
-            name = getRandomName();
-
-            newPatient = new Patient(name);
-            admitedPatients.push(newPatient);
-
-            counter = counter + 1;
-
-        } while (counter < numOfPatients);
-        
-        return admitedPatients;
-    }
-
-    getRandomName(){
-        nameArray = ["Josh", "David", "Marie", "Ana", "Joe", "Layla", "Paul", "Chris", "Christina", "Paulina", "Krista", "Donald", "Goofy", "Minnie", "Leslie", "Bill", "Lacey", "Kendra", "Karen", "Katherine", "Tracey", "Richard", "Erica", "Juan", "Ricardo", "Fernanda", "Maria", "Juanita", "Lola" ];
-        return  nameArray[Math.floor((nameArray.length * Math.random())) - 1];
-    }
-
-    getRandomID(){
-        let idLength = 6;
-        let empId =  "";
-
-        while(idLength > 0) {
-        const idArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","0"];
-        empId = empId + idArray[getRandomElement(idArray.length)];
-        idLength --;
-            }   
-        return empId;
     }
 
 }
