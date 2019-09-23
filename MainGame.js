@@ -1,3 +1,4 @@
+const input = require("readline-sync");
 const Employees = require("./Employees");
 const Doctor = require("./Doctor");
 const Surgeon = require("./Surgeon");
@@ -203,7 +204,7 @@ class MainGame {
         console.log("Type 'exit' to quit\n");
         let userInput = input.question("\nWhat would you like to do? ");
 
-        return userInput
+        return userInput;
     }
 
     subtick(){ //depreciates hospital cleanliness and patient health each time tick is repeated
